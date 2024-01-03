@@ -17,9 +17,42 @@ const App = () => {
   const [name, setName] = useState('');
   const [client, setClient] = useState('');
   const [selectedDuration, setSelectedDuration] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const bookedSlots = useSelector((state) => state.bookedSlots);
+
+  useEffect(() => {
+    // Load booked slots from the backend on component mount
+    fetchBookedSlots();
+  }, []);
+
+  const fetchBookedSlots = async () => {
+    try {
+      setLoading(true);
+
+      const response = await fetch('https://booking-service-calender-java-5e83bcc54d63.herokuapp.com/api/bookings', {
+        mode: 'cors',
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch booked slots. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!data) {
+        throw new Error('Empty response or invalid JSON format');
+      }
+
+      dispatch(loadBookedSlots(data));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleDateChange = (e) => {
     setSelectedDate(new Date(e.target.value));
@@ -31,7 +64,7 @@ const App = () => {
     setSelectedTime(null); // Reset selected time when changing the duration
   };
 
-  const bookTimeSlot = () => {
+  const bookTimeSlot = async () => {
     // Validate form inputs
     if (!selectedDate || !selectedTime || !selectedDuration || !name || !client) {
       alert('Please fill in all details before booking.');
@@ -53,34 +86,51 @@ const App = () => {
         name,
         client,
       };
-      dispatch(addBookedSlot(newBooking));
-      alert(
-        `Booking successful for ${selectedTime.label} on ${selectedDate.toDateString()} for ${name} with client ${client}`
-      );
+
+      try {
+        // Add a new booking to the backend
+        const response = await fetch('https://booking-service-calender-java-5e83bcc54d63.herokuapp.com/api/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newBooking),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to add booking');
+        }
+
+        // Update Redux state and alert on successful booking
+        dispatch(addBookedSlot(newBooking));
+        alert(`Booking successful for ${selectedTime.label} on ${selectedDate.toDateString()} for ${name} with client ${client}`);
+      } catch (error) {
+        console.error('Error adding booking:', error);
+      }
     }
   };
 
-  useEffect(() => {
-    // Load booked slots from localStorage on component mount
-    dispatch(loadBookedSlots());
-  }, [dispatch]);
-
-  useEffect(() => {
-    // Save booked slots to localStorage whenever bookedSlots changes
-    localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
-  }, [bookedSlots]);
-
-  const handleDeleteSlot = (index) => {
+  const handleDeleteSlot = async (index) => {
     const password = prompt('Please enter the password to delete the slot:');
     if (password === '522552') {
       const deletedSlot = bookedSlots[index];
-      // Dispatch an action to remove the slot from the Redux state
-      dispatch(deleteBookedSlot(index));
 
-      // Alert or any other action you want after deletion
-      alert(
-        `Booking for ${deletedSlot.time} on ${new Date(deletedSlot.date).toDateString()} has been deleted.`
-      );
+      try {
+        // Delete the booking from the backend
+        const response = await fetch(`https://booking-service-calender-java-5e83bcc54d63.herokuapp.com/api/bookings/${index}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to delete booking');
+        }
+
+        // Update Redux state and alert on successful deletion
+        dispatch(deleteBookedSlot(index));
+        alert(`Booking for ${deletedSlot.time} on ${new Date(deletedSlot.date).toDateString()} has been deleted.`);
+      } catch (error) {
+        console.error('Error deleting booking:', error);
+      }
     } else {
       alert('Wrong password. Deletion failed.');
     }
@@ -146,13 +196,19 @@ const App = () => {
       <div className="booked-slots-container">
         <div className="booked-slots-left">
           <h2>Booked Slots</h2>
-          {bookedSlots.map((bookedSlot, index) => (
-            <div key={index} className="booked-slot">
-              <p>
-                {new Date(bookedSlot.date).toLocaleDateString()} - {bookedSlot.time}
-              </p>
-            </div>
-          ))}
+          {loading ? (
+            <p>Loading...</p>
+          ) : error ? (
+            <p>Error: {error}</p>
+          ) : (
+            bookedSlots.map((bookedSlot, index) => (
+              <div key={index} className="booked-slot">
+                <p>
+                  {new Date(bookedSlot.date).toLocaleDateString()} - {bookedSlot.time}
+                </p>
+              </div>
+            ))
+          )}
         </div>
 
         <div className="booked-slots-right">
