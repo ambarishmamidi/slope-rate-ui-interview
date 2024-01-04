@@ -110,21 +110,30 @@ const App = () => {
     }
   };
 
+  const obfuscatePassword = (password) => {
+    // Replace this simple encoding with a more secure hashing algorithm in a real-world scenario
+    return btoa(password);
+  };
+  
   const handleDeleteSlot = async (index) => {
-    const password = prompt('Please enter the password to delete the slot:');
-    if (password === '522552') {
+    const encodedPassword = obfuscatePassword('7575'); // Change '7575' to your new password
+  
+    const userInput = prompt('Please enter the password to delete the slot:');
+    const userEncodedPassword = obfuscatePassword(userInput);
+  
+    if (userEncodedPassword === encodedPassword) {
       const deletedSlot = bookedSlots[index];
-
+  
       try {
         // Delete the booking from the backend
         const response = await fetch(`https://booking-service-calender-java-5e83bcc54d63.herokuapp.com/api/bookings/${index}`, {
           method: 'DELETE',
         });
-
+  
         if (!response.ok) {
           throw new Error('Failed to delete booking');
         }
-
+  
         // Update Redux state and alert on successful deletion
         dispatch(deleteBookedSlot(index));
         alert(`Booking for ${deletedSlot.time} on ${new Date(deletedSlot.date).toDateString()} has been deleted.`);
@@ -135,6 +144,7 @@ const App = () => {
       alert('Wrong password. Deletion failed.');
     }
   };
+  
 
   return (
     <div className="App">
