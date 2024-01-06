@@ -1,0 +1,49 @@
+.quiz-container {
+    text-align: center;
+}
+
+.answer_label{
+    height: 28px;
+    width: 200px;
+}
+
+.input-label {
+    margin-right: 10px;
+}
+
+.quize-heading {
+    font-size: 40px;
+    font-family: bold;
+    color: blue;
+    text-align: center;
+}
+
+.details-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.quiz-container-2 {
+    display: flex;
+    align-items: center;
+}
+
+.answer_textarea {
+    height: 100px;
+    width: 350px;
+}
+
+.submit-button {
+    height: 40px;
+    width: 150px;
+    background-color: blue;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
