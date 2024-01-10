@@ -1,9 +1,8 @@
-// QuizPage.js
 import React, { useState, useEffect } from 'react';
 
-
 import './QuizPage.css';
-const QuizPage = ({ onSubmit }) => {
+
+const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [additionalOptions, setAdditionalOptions] = useState({
@@ -11,11 +10,32 @@ const QuizPage = ({ onSubmit }) => {
     name: '',
   });
   const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useState(60); // Initial timer value in seconds
+
+  const [isStatus,setStatus] = useState(false)
 
   useEffect(() => {
     // Fetch questions from the backend when the component mounts
     fetchQuestions();
   }, []);
+
+  useEffect(() => {
+    const timerInterval = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer === 0) {
+          // If the timer reaches 0, automatically submit the form
+          handleSubmit();
+          clearInterval(timerInterval);
+          setStatus(true)
+          return 0;
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(timerInterval);
+  }, [selectedAnswers, additionalOptions.id, additionalOptions.name]);
 
   const fetchQuestions = async () => {
     try {
@@ -62,18 +82,10 @@ const QuizPage = ({ onSubmit }) => {
     }));
   };
 
-  const handleSubmitNew = () => {
-    // Combine selected answers and additional options
-    const combinedAnswers = { ...selectedAnswers, ...additionalOptions };
-
-    // Submit combined answers to the backend
-    onSubmit(combinedAnswers);
-  };
-
   const handleSubmit = () => {
     // Create an array to store question answers
     const answersArray = [];
-  
+
     // Iterate through questions to gather answers along with question information
     questions.forEach((question) => {
       const answerData = {
@@ -82,46 +94,96 @@ const QuizPage = ({ onSubmit }) => {
       };
       answersArray.push(answerData);
     });
-  
+
     // Additional user information
-    const userData = {
-      candidateId: additionalOptions.id || '',
-      candidateName: additionalOptions.name || '',
-    };
-  
+
     // Combine user data and answers for submission
     const submissionData = {
-      user: userData,
+      candidateId: additionalOptions.id || '',
+      candidateName: additionalOptions.name || '',
       questions: answersArray,
     };
-  
+
     // Call the function to submit the data to the backend
-    onSubmit(submissionData);
+    // onSubmit(submissionData);
+    console.log("submissionData: ", submissionData);
+    fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/question/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('Answers submitted successfully:', data))
+      .catch((error) => console.error('Error submitting answers:', error));
+      setStatus(true)
   };
 
+  const handleQuizSubmit = (answers) => {
+    // Submit answers to the backend
+
+    const flattenedAnswers = {
+      candidateId: answers.user.candidateId,
+      candidateName: answers.user.candidateName,
+      questions: answers.questions,
+    };
+
+    // Submit flattened answers to the backend
+    console.log('Flattened Answers:', flattenedAnswers.candidateName);
+
+    // Assuming you have a backend endpoint to store the answers
+    // You can make a POST request to store the answers
+    // Example:
+    fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/question/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(flattenedAnswers),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('Answers submitted successfully:', data))
+      .catch((error) => console.error('Error submitting answers:', error));
+  };
+  console.log(isStatus)
+
+  const successfullySubmitted = () => {
+    return (
+        <div className='success-container'>
+            <h1 className='message'>Successfully Submitted {additionalOptions.name}</h1>
+            <h1 className='text'>Thank you!</h1>
+        </div>
+    )
+  }
   return (
-    <div className='quiz-container'>
+    <div className='quiz-page'>
+        {isStatus ? (successfullySubmitted()) : 
+    (<div className='quiz-container'>
       <h2 className='quize-heading'>Quiz Page</h2>
+      <div className='timer-container'>
+        <p className='timer'>Time Remaining: <span>{timer}</span> seconds</p>
+      </div>
       <div className='details-container'>
         <div className='input-label'>
-          <label>
+          <label className='name'>
             Enter Your ID:
             <input
-              type="text"
+              type='text'
               onChange={(e) => handleAdditionalOptionChange('id', e.target.value)}
               value={additionalOptions.id || ''}
-              className="answer_label"
+              className='answer_label'
             />
           </label>
         </div>
         <div>
-          <label>
+          <label className='name'>
             Enter Your Name:
             <input
-              type="text"
+              type='text'
               onChange={(e) => handleAdditionalOptionChange('name', e.target.value)}
               value={additionalOptions.name || ''}
-              className="answer_label"
+              className='answer_label'
             />
           </label>
         </div>
@@ -139,20 +201,21 @@ const QuizPage = ({ onSubmit }) => {
                   <textarea
                     onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                     value={selectedAnswers[question.id] || ''}
-                    className="answer_textarea"
+                    className='answer_textarea'
                   />
                 </label>
               </div>
             </div>
           ))}
           {/* Additional options */}
-          <button onClick={handleSubmit} className='submit-button'>Submit Answers</button>
-          </>
+          <button onClick={handleSubmit} className='submit-button'>
+            Submit Answers
+          </button>
+        </>
       )}
+    </div>)}
     </div>
   );
-
 };
 
 export default QuizPage;
-

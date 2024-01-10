@@ -3,6 +3,8 @@
     const startTime = 6;
     const endTime = 21;
     const timeSlots = [];
+    console.log(startTime)
+    console.log(endTime)
   
     let currentMinute = 0; // Initialize currentMinute to track time accurately
   
@@ -22,6 +24,9 @@
         const label = `${time} - ${String(nextHour).padStart(2, '0')}:${String(nextMinute).padStart(2, '0')}`;
         const startTime = `${time}`;
         const endTime = `${String(nextHour).padStart(2, '0')}:${String(nextMinute).padStart(3, '0')}`;
+
+        console.log(startTime)
+        console.log(endTime)
 
         timeSlots.push({ label, value: label });
         

@@ -1,6 +1,10 @@
 .quiz-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
 }
+
 
 .answer_label{
     height: 28px;
@@ -45,5 +49,37 @@
     font-size: 12px;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.success-container {
+    height: 300px;
+    width: 600px;
+    background-color: lightsalmon;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.text {
+    font-weight: bold;
+    color: blue;
+}
+
+.timer {
+    font-size: 30px;
+    color: #9317eb;
+    font-weight: bold;
+}
+
+.message {
+    font-weight: bold;
+    color: blue;
+}
+
+.name {
     font-weight: bold;
 }
