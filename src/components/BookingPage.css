@@ -1,73 +1,86 @@
+
+/* BookingPage.css */
+
+
 .booking-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+.button {
+height: 35px;
+width: 100px;
+border: 0px;
+background-color: blue;
+color: #ffffff;
+cursor: pointer;
+margin-bottom: 40px;
+font-weight: bold;
+}
 .booking-container {
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .clientName {
-    padding-left: 10px;
-    padding-right: 3px;
-    font-weight: bold;
-  }
-  
-  .nameBold{
-    padding-right: 3px;
-    font-weight: bold;
-  }
-  
-  .bookTimeSlotPadding{
-    padding-left: 10px;
-    font-weight: bold;
-  }
-  
-  button {
-    margin-left: 5px;
-  }
-  /* Add these styles to your existing CSS file or create a new one */
-  
-  .booked-slots-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .booked-slots-left {
-    width: 30%;
-    background-color: #84a0e7; /* You can change this color as needed */
-    padding: 10px;
-  }
-  
-  .booked-slot {
-    margin-bottom: 10px;
-  }
-  
-  .booked-slots-right {
-    width: 65%;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  th, td {
-    border: 1px solid #0e0909;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  /* Additional styles can be added based on your design preferences */
-  
-  
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+
+.clientName {
+  padding-left: 10px;
+  padding-right: 3px;
+  font-weight: bold;
+}
+
+.nameBold{
+  padding-right: 3px;
+  font-weight: bold;
+}
+
+.bookTimeSlotPadding{
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+button {
+  margin-left: 5px;
+}
+/* Add these styles to your existing CSS file or create a new one */
+
+.booked-slots-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booked-slots-left {
+  width: 30%;
+  background-color: #84a0e7; /* You can change this color as needed */
+  padding: 10px;
+}
+
+.booked-slot {
+  margin-bottom: 10px;
+}
+
+.booked-slots-right {
+  width: 65%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #0e0909;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+

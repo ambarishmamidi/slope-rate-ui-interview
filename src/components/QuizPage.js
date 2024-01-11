@@ -1,3 +1,6 @@
+/* QuizPage.js */
+
+
 import React, { useState, useEffect } from 'react';
 
 import './QuizPage.css';
@@ -9,8 +12,10 @@ const QuizPage = () => {
     id: '',
     name: '',
   });
+  const initialTimer = 1800; // 30 minutes in seconds
   const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(60); // Initial timer value in seconds
+  const [timer, setTimer] = useState(initialTimer);
+  // const [timer, setTimer] = useState(60); // Initial timer value in seconds
 
   const [isStatus,setStatus] = useState(false)
 
@@ -36,6 +41,13 @@ const QuizPage = () => {
     // Cleanup the interval on component unmount
     return () => clearInterval(timerInterval);
   }, [selectedAnswers, additionalOptions.id, additionalOptions.name]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
 
   const fetchQuestions = async () => {
     try {
@@ -162,7 +174,7 @@ const QuizPage = () => {
     (<div className='quiz-container'>
       <h2 className='quize-heading'>Quiz Page</h2>
       <div className='timer-container'>
-        <p className='timer'>Time Remaining: <span>{timer}</span> seconds</p>
+      <p className='timer'>Time Remaining: <span>{formatTime(timer)}</span></p>
       </div>
       <div className='details-container'>
         <div className='input-label'>
@@ -185,7 +197,7 @@ const QuizPage = () => {
               value={additionalOptions.name || ''}
               className='answer_label'
             />
-          </label>
+        </label>
         </div>
       </div>
       {loading ? (
@@ -219,3 +231,4 @@ const QuizPage = () => {
 };
 
 export default QuizPage;
+
