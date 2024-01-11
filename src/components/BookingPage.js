@@ -1,7 +1,14 @@
+/* BookingPage.js */
+
+
 import React, { useState, useEffect } from 'react';
+
+import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookedSlot, deleteBookedSlot, loadBookedSlots } from "../redux/actions";
 import { generateTimeSlots } from '../utils';
+
+import "./BookingPage.css"
 
 const durationOptions = [
     { label: '30 minutes', value: 30 },
@@ -178,10 +185,12 @@ const BookingPage = () => {
   };      
 return (
     <div className='booking-page'>
+      <Link to="/quiz">
+      <button type="button" className='button'>Take Quiz</button>
+      </Link>
     <div className="booking-container">
           <h2>Select Date</h2>
           <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} />
-
           {selectedDate && (
             <>
               <h2>Select Time Duration</h2>
@@ -282,4 +291,5 @@ return (
           </div>
     )
 }
-export default BookingPage
+export default BookingPage 
+
