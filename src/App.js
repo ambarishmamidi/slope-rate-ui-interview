@@ -5,7 +5,7 @@ import './App.css';
 
 import QuizPage from "./components/QuizPage";
 import BookingPage from './components/BookingPage';
-
+import UserRegistrationForm from './components/UserRegistrationForm';
 const App = () => {
   return (
     <div className="app-container">
@@ -13,6 +13,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={BookingPage} />
           <Route exact path="/quiz" component={QuizPage} />
+          <Route exact path="/register" component={UserRegistrationForm} />
         </Switch>
       </BrowserRouter>
     </div>

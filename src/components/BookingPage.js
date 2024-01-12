@@ -30,6 +30,8 @@ const BookingPage = () => {
   const dispatch = useDispatch();
   const bookedSlots = useSelector((state) => state.bookedSlots);
 
+  
+
   useEffect(() => {
     // Load booked slots from the backend on component mount
     fetchBookedSlots();
@@ -155,6 +157,7 @@ const BookingPage = () => {
   /* const handleQuizLinkClick = () => {
     setShowQuiz(true);
   }; */
+  
 
   const handleQuizSubmit = (answers) => {
     // Submit answers to the backend
@@ -187,6 +190,9 @@ return (
     <div className='booking-page'>
       <Link to="/quiz">
       <button type="button" className='button'>Take Quiz</button>
+      </Link>
+      <Link to="/register">
+        <button type="button" className='button'>Registration Form</button>
       </Link>
     <div className="booking-container">
           <h2>Select Date</h2>
@@ -273,6 +279,8 @@ return (
                 </tr>
               </thead>
               <tbody>
+              
+
                 {bookedSlots.map((bookedSlot, index) => (
                   <tr key={index}>
                     <td>{new Date(bookedSlot.date).toLocaleDateString()}</td>
@@ -283,12 +291,19 @@ return (
                       <button onClick={() => handleDeleteSlot(index)}>Delete</button>
                     </td>
                   </tr>
+
+               
                 ))}
               </tbody>
             </table>
+           
+          </div>
+
           </div>
           </div>
-          </div>
+          
+
+          
     )
 }
 export default BookingPage 
