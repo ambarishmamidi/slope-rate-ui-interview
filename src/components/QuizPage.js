@@ -169,33 +169,37 @@ const QuizPage = () => {
     )
   }
   return (
-    <div className='quiz-page'>
+    <div className='quiz-page justify-center flex items-center bg-slate-200 '  style={{
+      width: "100%",
+      position: "fixed",
+      height: "calc(100vh - 68px- 30px)",marginTop:"90px"
+    }}>
         {isStatus ? (successfullySubmitted()) : 
-    (<div className='quiz-container'>
-      <h2 className='quize-heading'>Quiz Page</h2>
+    (<div className='quiz-container  p-5  '>
+      <h2 className='quize-heading text-red-500 mb-5'>Quiz Page</h2>
       <div className='timer-container'>
-      <p className='timer'>Time Remaining: <span>{formatTime(timer)}</span></p>
+      <p className='timer mb-5'>Time Remaining: <span>{formatTime(timer)}</span></p>
       </div>
-      <div className='details-container'>
+      <div className=' flex justify-center items-cemter flex-col'>
         <div className='input-label'>
-          <label className='name'>
+          <label className='name ml-5'>
             Enter Your ID:
             <input
               type='text'
               onChange={(e) => handleAdditionalOptionChange('id', e.target.value)}
               value={additionalOptions.id || ''}
-              className='answer_label'
+              className='border-2 rounded-lg ml-3 p-2 h-12 w-96'
             />
           </label>
         </div>
-        <div>
-          <label className='name'>
+        <div className='mt-5'>
+          <label className='name mt-2 mr-5'>
             Enter Your Name:
             <input
               type='text'
               onChange={(e) => handleAdditionalOptionChange('name', e.target.value)}
               value={additionalOptions.name || ''}
-              className='answer_label'
+              className=' border-2 rounded-lg ml-3 p-2 h-12 w-96'
             />
         </label>
         </div>
@@ -213,7 +217,7 @@ const QuizPage = () => {
                   <textarea
                     onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                     value={selectedAnswers[question.id] || ''}
-                    className='answer_textarea'
+                    className='answer_textarea  border-2 rounded-lg '
                   />
                 </label>
               </div>

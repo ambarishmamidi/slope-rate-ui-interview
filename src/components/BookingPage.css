@@ -65,22 +65,3 @@ button {
 .booked-slots-right {
   width: 65%;
 }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-th, td {
-  border: 1px solid #0e0909;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #4caf50;
-  color: white;
-}
-
-
