@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect } from 'react';
 
-import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookedSlot, deleteBookedSlot, loadBookedSlots } from "../redux/actions";
 import { generateTimeSlots } from '../utils';
@@ -184,18 +183,23 @@ const BookingPage = () => {
      .catch(error => console.error('Error submitting answers:', error));
   };      
 return (
-    <div className='booking-page'>
-      <Link to="/quiz">
-      <button type="button" className='button'>Take Quiz</button>
-      </Link>
-    <div className="booking-container">
-          <h2>Select Date</h2>
-          <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} />
+    <div className=''  style={{
+      width: "100%",
+      position: "fixed",
+      height: "calc(100vh - 68px- 30px)",marginTop:"70px"
+    }}>
+      
+    <div className="booking-container mt-5 mb-5 border-4 rounded-lg">
+      <div className='flex justify-center items-center flex-row'>
+          <h2 className='text-xl font-semibold mr-6 ml-4'>Select Date </h2>
+          <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} className=' border-2 border-black rounded-lg p-2 ' />
+          </div>
           {selectedDate && (
             <>
-              <h2>Select Time Duration</h2>
-              <select onChange={handleDurationChange}>
-                <option value="" disabled selected>
+             <div className='flex justify-center items-center flex-row mt-2'>
+               <h2 className='text-xl font-semibold mr-2 '>Time Duration </h2>
+              <select onChange={handleDurationChange} className=' border-2 border-black rounded-lg p-2 '>
+                <option value="" >
                   Select Duration
                 </option>
                 {durationOptions.map((option) => (
@@ -204,11 +208,12 @@ return (
                   </option>
                 ))}
               </select>
-
+</div>
               {selectedDuration && (
                 <>
-                  <h2>Select Time</h2>
-                  <select
+                <div className='flex justify-center items-center flex-row mt-2'>
+                  <h2 className='text-xl font-semibold mr-3 '>Select Time</h2>
+                  <select  className='border-2 border-black rounded-lg p-2 px-2 '
                     value={selectedTime ? selectedTime.value : ''}
                     onChange={(e) =>
                       setSelectedTime(
@@ -227,24 +232,26 @@ return (
                       </option>
                     ))}
                   </select>
+                  </div>
+                  <div className=' border shadow-md rounded-lg mt-5 p-5'>
+                  <h2 className='   shadow-red-500 text-2xl font-bold text-blue-500 mb-5'>Enter Details</h2>
+                  <label className='text-lg mr-4'>Name:</label>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} className='border-2 border-black rounded-lg p-2 mr-16 h-12 w-96 ' />
 
-                  <h2>Enter Details</h2>
-                  <label>Name:</label>
-                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                  <label className='text-lg mr-4'>Client:</label>
+                  <input type="text" value={client} onChange={(e) => setClient(e.target.value)} className='border-2 border-black rounded-lg p-2 mr-16 h-12 w-96'/>
 
-                  <label>Client:</label>
-                  <input type="text" value={client} onChange={(e) => setClient(e.target.value)} />
-
-                  <button onClick={bookTimeSlot}>Book Slot</button>
+                  <button onClick={bookTimeSlot} className=' text-white font-semibold bg-blue-500 hover:bg-blue-600  rounded-lg p-2 px-4 '>Book Slot</button>
+                  </div>
                 </>
               )}
             </>
           )}
         </div>
 
-        <div className="booked-slots-container">
-          <div className="booked-slots-left">
-            <h2>Booked Slots</h2>
+        <div className="booked-slots-container flex border-2 rounded-lg p-3 gap-5">
+          <div className="basis-1/4 bg-pink-500 shadow-lg shadow-black rounded-full h-96 justify-center items-center flex flex-col">
+            <h2 className='text-xl font-bold font-serif  p-3  rounded-xl  justify-center items-center flex'>Booked Slots</h2>
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
@@ -252,7 +259,7 @@ return (
             ) : (
               bookedSlots.map((bookedSlot, index) => (
                 <div key={index} className="booked-slot">
-                  <p>
+                  <p className='text-white font-semibold justify-center items-center flex'>
                     {new Date(bookedSlot.date).toLocaleDateString()} - {bookedSlot.time}
                   </p>
                 </div>
@@ -260,27 +267,27 @@ return (
             )}
           </div>
 
-          <div className="booked-slots-right">
-            <h2>Details</h2>
-            <table>
+          <div className="booked-slots-right h-96  basis-3/4">
+            <h2 className='text-xl font-bold font-serif border-2 p-3 text-red-500 rounded-xl shadow-md justify-center items-center flex'>Booked Slot Details here</h2>
+            <table className='w-full border-collapse border-2 border-slate-300'>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Name</th>
-                  <th>Client</th>
-                  <th>Delete Slot</th>
+                  <th className='text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2'>Date</th>
+                  <th className='text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2'>Time</th>
+                  <th className='text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Name</th>
+                  <th className='text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Client</th>
+                  <th className='text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Delete Slot</th>
                 </tr>
               </thead>
               <tbody>
                 {bookedSlots.map((bookedSlot, index) => (
                   <tr key={index}>
-                    <td>{new Date(bookedSlot.date).toLocaleDateString()}</td>
-                    <td>{bookedSlot.time}</td>
-                    <td>{bookedSlot.name}</td>
-                    <td>{bookedSlot.client}</td>
-                    <td>
-                      <button onClick={() => handleDeleteSlot(index)}>Delete</button>
+                    <td className='text-center border-2 border-slate-300  '>{new Date(bookedSlot.date).toLocaleDateString()}</td>
+                    <td className='text-center border-2 border-slate-300  '>{bookedSlot.time}</td>
+                    <td className='text-center border-2 border-slate-300  '>{bookedSlot.name}</td>
+                    <td className='text-center border-2 border-slate-300  '>{bookedSlot.client}</td>
+                    <td className='text-center border-2 border-slate-300'>
+                      <button onClick={() => handleDeleteSlot(index)} className='  bg-red-400 px-4  font-bold p-2 hover:bg-red-500  rounded-md hover:text-white  '>Delete</button>
                     </td>
                   </tr>
                 ))}

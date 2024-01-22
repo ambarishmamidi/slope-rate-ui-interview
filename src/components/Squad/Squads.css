@@ -1,0 +1,35 @@
+/* Squads.css */
+.squad-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .team-details {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .teams-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .team-card {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+  }
+  
+  /* Add more styles as needed */
+  
