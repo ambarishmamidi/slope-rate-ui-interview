@@ -30,11 +30,11 @@ function Header() {
       <Route exact path="/" component={BookingPage} />
           <Route exact path="/quiz" component={QuizPage} />
           <Route exact path="/match" component={Match} />
-          <Route exact path="/squad" component={Squads} />
-          
+          <Route exact path="/schedule/:id" component={Squads} />
+
         </Switch>
       </BrowserRouter>
-
+a
 
     </div>
   )
