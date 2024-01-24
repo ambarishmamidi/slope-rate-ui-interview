@@ -20,17 +20,17 @@ function Match() {
       width: "100%",
       position: "fixed",
       height: "calc(100vh - 68px- 30px)",
-      marginTop: "100px"
+      marginTop: "80px"
     }}>
-      <div className='grid grid-cols-8 h-32 gap-3'>
+      <div className='grid grid-cols-4 h-32 gap-3'>
         {data.map((item, index) => (
-          <div className='border p-1 border-gray-300 rounded-lg shadow-md shadow-black bg-red-400 justify-center items-center flex flex-col' key={index}>
+          <div className='border p-1 border-gray-300 bg-white rounded-lg shadow-md shadow-black  justify-center items-center flex flex-col' key={index}>
             <h1 className='text-xs text-Zinc-500 font-bold'>Slope Rate T20 league . 2024<b className='rounded-full bg-zinc-700 px-2 text-white ml-3'>T20</b></h1>
             <div>
               <div className='justify-start flex flex-row items-center'>
-                <h2 className='mb-0 font-bold text-md text-white'> {item.team[0].teamName} VS {item.team[1].teamName} </h2>
+                <h2 className='mb-0 font-bold text-md text-red-600'> {item.team[0].teamName} VS {item.team[1].teamName} </h2>
               </div>
-              <p className='text-white text-xs'>{item.date} . {item.location} ,{item.dist}.</p>
+              <p className='text-slate-600 text-xs'>{item.date} {item.location} ,{item.dist}.</p>
             </div>
             <div className=''>
               <Link to={{
