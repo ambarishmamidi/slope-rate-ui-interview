@@ -188,12 +188,7 @@ const BookingPage = () => {
   };      
 return (
     <div className='booking-page'>
-      <Link to="/quiz">
-      <button type="button" className='button'>Take Quiz</button>
-      </Link>
-      <Link to="/register">
-        <button type="button" className='button'>Registration Form</button>
-      </Link>
+     
     <div className="booking-container">
           <h2>Select Date</h2>
           <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} />
