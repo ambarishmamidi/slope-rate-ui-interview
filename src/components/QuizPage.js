@@ -169,13 +169,13 @@ const QuizPage = () => {
     )
   }
   return (
-    <div className='quiz-page justify-center flex items-center bg-slate-200 '  style={{
+    <div className='quiz-page justify-center flex items-center bg-slate-200  '  style={{
       width: "100%",
       position: "fixed",
       height: "calc(100vh - 68px- 30px)",marginTop:"90px"
     }}>
         {isStatus ? (successfullySubmitted()) : 
-    (<div className='quiz-container  p-5  '>
+    (<div className='quiz-container  p-5 overflow-scroll '>
       <h2 className='quize-heading text-red-500 mb-5'>Quiz Page</h2>
       <div className='timer-container'>
       <p className='timer mb-5'>Time Remaining: <span>{formatTime(timer)}</span></p>
@@ -217,7 +217,7 @@ const QuizPage = () => {
                   <textarea
                     onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                     value={selectedAnswers[question.id] || ''}
-                    className='answer_textarea  border-2 rounded-lg '
+                    className='answer_textarea   '
                   />
                 </label>
               </div>

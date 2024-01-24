@@ -13,27 +13,31 @@ function Squads({ location }) {
   const { gameId, location: gameLocation, dist, date, team } = state.gameDetails;
 
   return (
-    <div className='justify-center items-center flex w-full'>
+    
     <div className='squad-container'>
+        <div className="squad-container-wrapper">
       <div className='team-details'>
-        <h1 className='text-blue-500'>Game Details - {gameId}</h1>
+        {/* <h1 className='text-blue-500'>Game Details - {gameId}</h1>
         <p>Location: {gameLocation}</p>
         <p>Dist: {dist}</p>
-        <p>Date: {date}</p>
+        <p>Date: {date}</p> */}
+        <h1 className=' border border-2 p-3 bg-green-400 hover:bg-green-500 text-white font-bold rounded-xl justify-center items-center flex w-full'>Playing 11</h1>
       </div>
 
       <div className='teams-container '>
+      
         {team.map((teamItem) => (
           <div key={teamItem.teamId} className='team-card border-2 rounded-xl  '>
-            <h2 className='text-red-500'>{teamItem.teamName}</h2>
+            
+            <h2 className='text-white bg-pink-400 hover:bg-pink-600 justify-center items-center flex p-2 font-bold font-serif px-12'>{teamItem.teamName}</h2>
             {/* <p>Team ID: {teamItem.teamId}</p> */}
-            <p> Captain: {teamItem.captainName}</p>
-            <p> Vice Captain: {teamItem.viceCaptainName}</p>
+            <p className=' p-1'> Captain: {teamItem.captainName}</p>
+            <p className=' p-1'> Vice Captain: {teamItem.viceCaptainName}</p>
 
-            <h3>Team Members</h3>
+            <h3></h3>
             <ul>
               {teamItem.teamMembers.map((member, index) => (
-                <li key={index}>{member}</li>
+                <li key={index} className=' p-1'> Team Member: {member}</li>
               ))}
             </ul>
           </div>
@@ -41,6 +45,7 @@ function Squads({ location }) {
       </div>
     </div>
     </div>
+   
   );
 }
 
