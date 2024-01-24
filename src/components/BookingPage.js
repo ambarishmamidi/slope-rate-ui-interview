@@ -162,12 +162,7 @@ const BookingPage = () => {
   };
 
   return (
-    <div className='' style={{
-      width: "100%",
-      position: "fixed",
-      height: "calc(100vh - 68px- 30px)",
-      marginTop: "70px"
-    }}>
+    <div className='' >
 
       {!isPinEntered ? (
         <div className="pin-prompt justify-center items-center flex mt-[250px] flex-col object-contain">
@@ -249,10 +244,10 @@ const BookingPage = () => {
             </>
           )}
 
-          <div className="booked-slots-container flex border-2 rounded-lg p-3 gap-5">
+          <div className="container mx-auto p-4 justify-start items-center flex ">
             
-            <div className="basis-1/4 bg-pink-500 shadow-lg shadow-black rounded-full h-96 justify-center items-center flex flex-col">
-          <h2 className="text-xl font-bold font-serif  p-3  rounded-xl  justify-center items-center flex">
+            <div className="lg:w-1/2 mb-4 lg:mb-0 ">
+          <h2 className="text-md font-bold font-serif  p-3  rounded-xl  justify-center items-center flex">
             Booked Slots
           </h2>
           {loading ? (
@@ -262,7 +257,7 @@ const BookingPage = () => {
           ) : (
             bookedSlots.map((bookedSlot, index) => (
               <div key={index} className="booked-slot">
-                <p className="text-white font-semibold justify-center items-center flex">
+                <p className=" font-semibold justify-center items-center flex">
                   {new Date(bookedSlot.date).toLocaleDateString()} -{" "}
                   {bookedSlot.time}
                 </p>
@@ -271,8 +266,8 @@ const BookingPage = () => {
           )}
         </div>
 
-        <div className="booked-slots-right h-96  basis-3/4">
-          <h2 className="text-xl font-bold font-serif border-2 p-3 text-red-500 rounded-xl shadow-md justify-center items-center flex">
+        <div className="lg:w-1/2">
+          <h2 className="text-md font-bold font-serif border-2 p-3 text-red-500 rounded-xl shadow-md justify-center items-center flex">
             Booked Slot Details here
           </h2>
           <table className="w-full border-collapse border-2 border-slate-300">
@@ -313,7 +308,7 @@ const BookingPage = () => {
                   <td className="text-center border-2 border-slate-300">
                     <button
                       onClick={() => handleDeleteSlot(index)}
-                      className="  bg-red-700 px-4 text-white  font-bold p-2 hover:bg-red-500  rounded-md hover:text-white  "
+                      className="  bg-red-700  text-white  font-bold  hover:bg-red-500  rounded-md hover:text-white  "
                     >
                       Delete
                     </button>

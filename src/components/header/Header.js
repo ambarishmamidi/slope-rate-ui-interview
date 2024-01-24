@@ -6,13 +6,14 @@ import Match from '../matches/Match'
 import logo from '../../assests/slope rate.jpeg'
 import Squads from '../Squad/Squads'
 import Home from '../Home/Home'
+import './Header.css'
 
 function Header() {
   return (
-    <div className=' w-[1024px} fixed'>
+    <div className=''>
         <BrowserRouter>
         <nav>
-<div className='flex justify-start items-center flex-row bg-blue-500 p-2    rounded-lg mt-2 container-sm shadow-sm shadow-black fixed w-full '>
+<div className='  flex justify-start items-center flex-row bg-blue-500 p-2    rounded-lg mt-2  shadow-sm shadow-black fixed w-full '>
 <div className='flex justify-start items-center mr-[800px]'>
     <Link to='/'><img src={logo} alt='' className='rounded-md w-24 h-12 cursor-pointer ml-16'/></Link>
 </div>
