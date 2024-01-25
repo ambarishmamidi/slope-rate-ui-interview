@@ -1,11 +1,32 @@
 
 /* BookingPage.css */
 
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* BookingPage.css */
+.container {
+  height: 100%; 
+  padding: 10px;
+}
 
 .booking-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.slot-container-2 {
+  height: 200px;
+  width: 200px;
+  background-color: pink;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
@@ -20,10 +41,10 @@ font-weight: bold;
 }
 .booking-container {
   text-align: center;
-  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+
 
 
 .clientName {
@@ -64,4 +85,120 @@ button {
 
 .booked-slots-right {
   width: 65%;
+}
+
+@media only screen and (max-width: 375px) {
+  .booking-container {
+    height: auto;
+    width: 340px; 
+    border-radius: 40px;
+    font-size: 10px;
+    font-weight: bold;
+    background-color: aqua;
+  }
+
+  .slot-container-2 {
+    height: 120px;
+    width: 120px;
+    background-color: orange;
+    border-radius: 60px;
+    font-size: 12px;
+    align-self: center;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .paragraph {
+    font-size: 8px;
+    margin: 0px;
+  }
+
+  .booked-slots-container {
+    display: block;
+  }
+
+  .heading-4 {
+    font-size: 14px;
+  }
+
+  .book-container-2 {
+    width: 200px;
+  }
+
+  .booking-user-table {
+    width: auto;
+  }
+
+  .booked-slots-right {
+    width: auto;
+    height: auto;
+  }
+
+  .heading-2 {
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0px;
+  }
+
+  .booked-slots-container {
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .booked-slots-right {
+    width: auto;
+  }
+
+  .user-text {
+    font-size: 12px;
+  }
+
+  .booking-user-table {
+    width: 312px;
+  }
+
+  .table-container {
+    width: auto;
+  }
+
+  .button-2 {
+    height: 28px;
+    text-align: center;
+  }
+
+  .select-heading {
+    font-size: 12px;
+  }
+
+  .name-client-container {
+    height: auto;
+    width: auto;
+    text-align: center;
+  }
+
+  .book-button {
+    margin-top: 10px;
+  }
+
+  .date-input {
+    width: auto;
+    height: 38px;
+    font-size: 10px;
+
+  }
+  .date-input-2 {
+    width: 400px;
+    height: 38px;
+    font-size: 10px;
+
+  }
+
+  .heading-2 {
+    display: block;
+  }
 }
