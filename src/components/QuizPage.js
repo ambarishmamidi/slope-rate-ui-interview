@@ -169,13 +169,9 @@ const QuizPage = () => {
     )
   }
   return (
-    <div className='quiz-page justify-center flex items-center bg-slate-200  '  style={{
-      width: "100%",
-      position: "fixed",
-      height: "calc(100vh - 68px- 30px)",marginTop:"90px"
-    }}>
+    <div className='container mx-auto p-4'>
         {isStatus ? (successfullySubmitted()) : 
-    (<div className='quiz-container  p-5 overflow-scroll '>
+    (<div className='quiz-container   '>
       <h2 className='quize-heading text-red-500 mb-5'>Quiz Page</h2>
       <div className='timer-container'>
       <p className='timer mb-5'>Time Remaining: <span>{formatTime(timer)}</span></p>
@@ -188,7 +184,7 @@ const QuizPage = () => {
               type='text'
               onChange={(e) => handleAdditionalOptionChange('id', e.target.value)}
               value={additionalOptions.id || ''}
-              className='border-2 rounded-lg ml-3 p-2 h-12 w-96'
+              className='border-2 rounded-lg '
             />
           </label>
         </div>
@@ -199,7 +195,7 @@ const QuizPage = () => {
               type='text'
               onChange={(e) => handleAdditionalOptionChange('name', e.target.value)}
               value={additionalOptions.name || ''}
-              className=' border-2 rounded-lg ml-3 p-2 h-12 w-96'
+              className=' border-2 rounded-lg '
             />
         </label>
         </div>

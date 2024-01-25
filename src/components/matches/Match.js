@@ -16,13 +16,8 @@ function Match() {
   
 
   return (
-    <div className='border-2 border-slate-400 rounded-lg shadow-md shadow-black p-3 h-[720px] bg-gray-100' style={{
-      width: "100%",
-      position: "fixed",
-      height: "calc(100vh - 68px- 30px)",
-      marginTop: "80px"
-    }}>
-      <div className='grid grid-cols-4 h-32 gap-3'>
+    <div className='container mx-auto p-4' >
+      <div className='lg:flex mb-4 lg:mb-0 grid grid-cols-1 gap-5'>
         {data.map((item, index) => (
           <div className='border p-1 border-gray-300 bg-white rounded-lg shadow-md shadow-black  justify-center items-center flex flex-col' key={index}>
             <h1 className='text-xs text-Zinc-500 font-bold'>Slope Rate T20 league . 2024<b className='rounded-full bg-zinc-700 px-2 text-white ml-3'>T20</b></h1>
