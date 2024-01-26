@@ -34,7 +34,7 @@ function Squads({ location }) {
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-      setTimeRemaining(`Remaining Time ${hours}h ${minutes}m ${seconds}s`);
+      setTimeRemaining(`Match Started ${hours}h ${minutes}m ${seconds}s To Go`);
     } else {
       setTimeRemaining('Match Started');
     }
