@@ -45,6 +45,25 @@
     align-items: center;
     flex-direction: column;
   }
+  /* Squads.css */
+
+/* Add styling for the countdown text */
+.countdown-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.start-match {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff; /* Text color */
+  background-color: #3498db; /* Background color */
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
   
   /* Add more styles as needed */
   
