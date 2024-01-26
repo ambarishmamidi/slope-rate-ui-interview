@@ -188,7 +188,7 @@ return (
     height: "calc(100vh - 68px- 30px)",marginTop:"70px"
   }}>
     <div className="booking-container mt-5 mb-5 border-4 rounded-lg">
-      <div className='book-container-2 flex justify-center items-center flex-row'>
+     <div className='book-container-2 flex justify-center items-center flex-row'>
           <h2 className='select-heading text-xl font-semibold mr-6 ml-4'>Select Date </h2>
           <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} className='date-input border-2 border-black rounded-lg p-2 ' />
           </div>
@@ -265,6 +265,7 @@ return (
   )}
 </div>
     
+    
 
 
 
@@ -278,7 +279,7 @@ return (
                   <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2'>Time</th>
                   <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Name</th>
                   <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Client</th>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Delete Slot</th>
+                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Delete</th>
                 </tr>
               </thead>
               <tbody>
