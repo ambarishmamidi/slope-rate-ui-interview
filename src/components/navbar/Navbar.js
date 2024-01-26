@@ -8,6 +8,7 @@ import QuizPage from '../QuizPage'
 import Match from '../matches/Match'
 import Squads from '../Squad/Squads'
 import Home from '../Home/Home'
+import LiveScore from '../LiveScore/LiveScore'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +38,9 @@ function Navbar() {
           </div>
           <div className={`lg:flex ${isMenuOpen ? 'block' : 'hidden'}`}>
           
-
+          <Link to="/live/:id">
+      <button type="button" className=' p-3 rounded-lg text-white font-semibold mr-4 hover:bg-blue-900  px-4 bg-red-600 hover:bg-red-700'>Live Score</button>
+      </Link>
       <Link to="/">
         <button type="button" className='p-3 rounded-lg text-white font-semibold hover:bg-blue-900 px-4'>Home</button>
       </Link>
@@ -59,6 +62,7 @@ function Navbar() {
           <Route exact path="/quiz" component={QuizPage} />
           <Route exact path="/match" component={Match} />
           <Route exact path="/schedule/:id" component={Squads} />
+          <Route exact path="/live/:id" component={LiveScore} />
 
         </Switch>
         </BrowserRouter>

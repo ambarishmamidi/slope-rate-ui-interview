@@ -31,7 +31,11 @@ function Match() {
               <Link to={{
                 pathname: `/schedule/${item.gameId}`,
                 state: { gameDetails: item } // Pass the data as state
-              }} className='text-md hover:underline hover:text-red-500 text-blue-500 font-semibold text-mono'>CLICK</Link>
+              }} className='text-md hover:underline hover:text-red-500 text-blue-500 font-semibold text-mono mr-4'>CLICK</Link>
+              <Link to={{
+                pathname: `/live/${item.gameId}`,
+                state: { gameDetails: item } // Pass the data as state
+              }} className='text-md hover:underline hover:text-red-500 text-blue-500 font-semibold text-mono'>Live Score</Link>
             </div>
           </div>
         ))}

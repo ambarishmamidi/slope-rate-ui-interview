@@ -41,6 +41,7 @@ function Squads({ location }) {
   };
 
   if (!state || !state.gameDetails) {
+  
     // Handle invalid state or no gameDetails
     return <div>Error: Invalid state</div>;
   }
