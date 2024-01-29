@@ -11,7 +11,7 @@ import Navbar from './components/navbar/Navbar';
 
 const App = () => {
   return (
-    <div className=" ">
+    <div className="app-container">
       {/* <div className=''>
       <Layouts/>
       </div> */}
