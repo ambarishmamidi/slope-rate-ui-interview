@@ -239,7 +239,7 @@ const RegistrationForm = () => {
           </div>
           <div></div>
 
-          <button type='submit' className='submit-button'>
+          <button type='submit' className='register-button'>
             Register
           </button>
         </form>
