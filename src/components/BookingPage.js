@@ -182,11 +182,7 @@ const BookingPage = () => {
      .catch(error => console.error('Error submitting answers:', error));
   };      
 return ( 
-  <div className='container'  style={{
-    width: "100%",
-    position: "fixed",
-    height: "calc(100vh - 68px- 30px)",marginTop:"70px"
-  }}>
+  <div className='container'>
     <div className="booking-container mt-5 mb-5 border-4 rounded-lg">
      <div className='book-container-2 flex justify-center items-center flex-row'>
           <h2 className='select-heading text-xl font-semibold mr-6 ml-4'>Select Date </h2>

@@ -60,3 +60,16 @@ button {
 .booked-slots-right {
   width: 65%;
 }
+
+
+@media screen and (max-width: 425px) {
+  .app-container {
+    height: 100%;
+    padding-bottom: 10px;
+    overflow-y: auto;
+  }
+}
+
+.app-container {
+  padding-bottom: 10px;
+}
