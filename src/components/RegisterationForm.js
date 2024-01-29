@@ -237,7 +237,7 @@ const RegistrationForm = () => {
           
 
           </div>
-          <button type='submit' className='register-button-2'>
+          <button type='submit' className='register-button-2' style={{ backgroundColor: 'red' }}>
             Register
           </button>
         </form>
