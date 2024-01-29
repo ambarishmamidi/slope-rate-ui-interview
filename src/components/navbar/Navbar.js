@@ -9,6 +9,7 @@ import Match from '../matches/Match'
 import Squads from '../Squad/Squads'
 import Home from '../Home/Home'
 import LiveScore from '../LiveScore/LiveScore'
+import RegistrationForm from '../RegisterationForm'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,6 +54,9 @@ function Navbar() {
       <Link to="/match">
         <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>Matches Details</button>
       </Link>
+      <Link to="/reg">
+        <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>RegistrationForm</button>
+      </Link>
       </div>
       </div>
 </nav>
@@ -63,6 +67,7 @@ function Navbar() {
           <Route exact path="/match" component={Match} />
           <Route exact path="/schedule/:id" component={Squads} />
           <Route exact path="/live/:id" component={LiveScore} />
+          <Route exact path="/reg" component={RegistrationForm} />
 
         </Switch>
         </BrowserRouter>
