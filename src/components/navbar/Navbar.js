@@ -34,14 +34,12 @@ function Navbar() {
               className='text-white focus:outline-none focus:border-none h-12 w-12 '
             >
               ☰
-            </button>
+            </button>``
           </div>
           </div>
           <div className={`lg:flex ${isMenuOpen ? 'block' : 'hidden'}`}>
           
-          <Link to="/live/:id">
-      <button type="button" className=' p-3 rounded-lg text-white font-semibold mr-4 hover:bg-blue-900  px-4 bg-red-600 hover:bg-red-700'>Live Score</button>
-      </Link>
+          
       <Link to="/">
         <button type="button" className='p-3 rounded-lg text-white font-semibold hover:bg-blue-900 px-4'>Home</button>
       </Link>
@@ -55,8 +53,9 @@ function Navbar() {
         <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>Matches Details</button>
       </Link>
       <Link to="/userRegistration">
-        <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>RegistrationForm</button>
+        <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>Registration Form</button>
       </Link>
+      
       </div>
       </div>
 </nav>
