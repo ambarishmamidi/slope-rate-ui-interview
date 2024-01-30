@@ -8,12 +8,11 @@ body {
 }
 /* BookingPage.css */
 .container {
-  height: 100%; 
+  height: auto; 
   padding: 10px;
 }
 
 .booking-page {
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -40,6 +39,7 @@ margin-bottom: 40px;
 font-weight: bold;
 }
 .booking-container {
+  height: auto;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -87,21 +87,27 @@ button {
   width: 65%;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
+  .container {
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+  }
+  
   .booking-container {
-    height: auto;
-    width: 340px; 
+    max-width: 425px; 
     border-radius: 40px;
     font-size: 10px;
     font-weight: bold;
     background-color: aqua;
+    overflow-y: auto;
   }
 
   .slot-container-2 {
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     background-color: orange;
-    border-radius: 60px;
+    border-radius: 50px;
     font-size: 12px;
     align-self: center;
     display: flex;
@@ -116,7 +122,8 @@ button {
   }
 
   .booked-slots-container {
-    display: block;
+    height: 100%;
+    overflow: auto;
   }
 
   .heading-4 {
@@ -124,16 +131,20 @@ button {
   }
 
   .book-container-2 {
-    width: 200px;
+    max-width: 425px;
   }
 
   .booking-user-table {
-    width: auto;
+    max-width: 425px;
   }
+    
+    
 
   .booked-slots-right {
-    width: auto;
-    height: auto;
+    max-width: 425px; 
+  }
+
+  .thread-container {
   }
 
   .heading-2 {
@@ -144,7 +155,8 @@ button {
   }
 
   .booked-slots-container {
-    width: 340px;
+    height: auto;
+    max-width: 425px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -155,11 +167,12 @@ button {
   }
 
   .user-text {
-    font-size: 12px;
+    font-size: 8px;
   }
 
   .booking-user-table {
-    width: 312px;
+    max-width: 425px;
+    margin: 0px;
   }
 
   .table-container {
@@ -167,7 +180,6 @@ button {
   }
 
   .button-2 {
-    height: 28px;
     text-align: center;
   }
 
@@ -186,13 +198,13 @@ button {
   }
 
   .date-input {
-    width: auto;
+    max-width: auto;
     height: 38px;
     font-size: 10px;
 
   }
   .date-input-2 {
-    width: 400px;
+    max-width: 310px;
     height: 38px;
     font-size: 10px;
 
