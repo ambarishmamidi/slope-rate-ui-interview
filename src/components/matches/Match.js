@@ -23,7 +23,7 @@ function Match() {
             <h1 className='text-xs text-Zinc-500 font-bold'>Slope Rate T20 league . 2024<b className='rounded-full bg-zinc-700 px-2 text-white ml-3'>T20</b></h1>
             <div>
               <div className='justify-start flex flex-row items-center'>
-                <h2 className='mb-0 font-bold text-md text-red-600'> {item.team[0].teamName} VS {item.team[1].teamName} </h2>
+                <h4 className='mb-0 font-bold  text-red-600'> {item.team[0].teamName} VS {item.team[1].teamName} </h4>
               </div>
               <p className='text-slate-600 text-xs'>{item.date} {item.location} ,{item.dist}.</p>
             </div>
