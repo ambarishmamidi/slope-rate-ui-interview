@@ -13,7 +13,7 @@ const RegistrationForm = () => {
   const [registeredUsers, setRegisteredUsers] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
-  const [pinVerified, setPinVerified] = useState(false);
+  const [pinVerified] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleChange = (e) => {
@@ -109,32 +109,67 @@ const RegistrationForm = () => {
 
 
   const handleDelete = async (mobile) => {
+
+    try{ 
+
+    let enteredPin;
+
     // Ask for the PIN only if it's not verified yet
     if (!pinVerified) {
-      const enteredPin = prompt('Enter PIN for deletion:');
-      if (enteredPin === '12345') {
-        setPinVerified(true);
-      } else {
+      enteredPin = prompt('Enter PIN for deletion:');
+      if (enteredPin !== '12345') {
+      //   // setPinVerified(true);
+      // } else {
         alert('Incorrect PIN. Deletion failed.');
         return;
       }
     }
   
-    try {
+    // try {
       // Make a DELETE request to the registration endpoint with the mobile number parameter
       const response = await axios.delete(
         `https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/delete/${mobile}`
-      );
+      
+       
+       
+    );
+     
+      
   
       // Handle the response from the backend
       console.log('Delete Response:', response);
   
       // Update the list of registered users after successful deletion
       if (response.status === 200) {
-        setRegisteredUsers((prevUsers) => prevUsers.filter((user) => user.mobile !== mobile));
+        // setRegisteredUsers((prevUsers) => prevUsers.filter((user) => user.mobile !== mobile));
+       
+
+
+      //   // Fetch the updated list of users immediately after deletion
+      // const updatedUsersResponse = await axios.get(
+      //   'https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/all'
+      // );
+      // const updatedUsersData = updatedUsersResponse.data;
+
+      // if (Array.isArray(updatedUsersData)) {
+      //   setAllUsers(updatedUsersData);
+      // } else {
+      //   console.error('Unexpected response format:', updatedUsersData);
+      // }
+
+       // Instead of fetching the updated list, manually filter out the deleted user
+       setAllUsers((prevUsers) => prevUsers.filter((user) => user.mobile !== mobile));
+
+       
+       
+       
         alert('Data Deleted Successfully');
+
+         // Wait for the data to be deleted before triggering a refetch
+        // await axios.get('https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/all');
+
         // Update the isRegistered state to trigger a refetch of data
-        setIsRegistered((prev) => !prev);
+        // setIsRegistered((prev) => !prev);
 
       } else {
         // Handle deletion failure
@@ -174,7 +209,7 @@ const RegistrationForm = () => {
     };
 
     fetchData();
-  }, [isRegistered]); // Add isRegistered to the dependency array to fetch updated data after registration
+  }, [registeredUsers,pinVerified]); // Add isRegistered to the dependency array to fetch updated data after registration
 
   
   return (
