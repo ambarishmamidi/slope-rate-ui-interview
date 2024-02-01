@@ -8,7 +8,7 @@ body {
 }
 /* BookingPage.css */
 .container {
-  height: auto; 
+  height: 100%; 
   padding: 10px;
 }
 
@@ -20,12 +20,13 @@ body {
 .slot-container-2 {
   height: 200px;
   width: 200px;
-  background-color: pink;
+  background-color: green;
   border-radius: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
 }
 
 .button {
@@ -71,6 +72,8 @@ button {
 .booked-slots-container {
   display: flex;
   justify-content: space-between;
+  overflow-y: auto;
+  height: auto;
 }
 
 .booked-slots-left {
@@ -213,4 +216,14 @@ button {
   .heading-2 {
     display: block;
   }
+}
+
+.spacer-row{
+  background-color: blue;
+}
+
+.spacer-cell{
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
 }

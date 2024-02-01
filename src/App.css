@@ -61,6 +61,12 @@ button {
   width: 65%;
 }
 
+.app-container {
+  height: 100%;
+  padding-bottom: 10px;
+  overflow-y: auto;
+}
+
 
 @media screen and (max-width: 425px) {
   .app-container {

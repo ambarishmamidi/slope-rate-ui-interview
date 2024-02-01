@@ -180,18 +180,31 @@ const BookingPage = () => {
      .then(data => console.log('Answers submitted successfully:', 
      data))
      .catch(error => console.error('Error submitting answers:', error));
-  };      
-return ( 
-  <div className='container'>
-    <div className="booking-container mt-5 mb-5 border-4 rounded-lg">
-     <div className='book-container-2 flex justify-center items-center flex-row'>
+  };  
+  
+  const sortedBookedSlots = [...bookedSlots].sort((slot1, slot2) => {
+    const date1 = new Date(slot1.date);
+    const date2 = new Date(slot2.date);
+
+    if (date1.getTime() !== date2.getTime()) {
+      return date1.getTime() - date2.getTime();
+    }
+
+    return slot1.time.localeCompare(slot2.time);
+  });
+
+  return (
+    <div className='container'>
+      <div className="booking-container mt-5 mb-5 border-4 rounded-lg">
+        <div className='book-container-2 flex justify-center items-center flex-row'>
           <h2 className='select-heading text-xl font-semibold mr-6 ml-4'>Select Date </h2>
           <input type="date" onChange={handleDateChange} min={new Date().toISOString().split('T')[0]} className='date-input border-2 border-black rounded-lg p-2 ' />
-          </div>
-          {selectedDate && (
-            <>
-             <div className='flex justify-center items-center flex-row mt-2'>
-               <h2 className='select-heading text-xl font-semibold mr-2 '>Time Duration </h2>
+        </div>
+  
+        {selectedDate && (
+          <>
+            <div className='flex justify-center items-center flex-row mt-2'>
+              <h2 className='select-heading text-xl font-semibold mr-2 '>Time Duration </h2>
               <select onChange={handleDurationChange} className='date-input border-2 border-black rounded-lg p-2 '>
                 <option value="" >
                   Select Duration
@@ -202,12 +215,12 @@ return (
                   </option>
                 ))}
               </select>
-</div>
-              {selectedDuration && (
-                <>
+            </div>
+            {selectedDuration && (
+              <>
                 <div className='flex justify-center items-center flex-row mt-2'>
                   <h2 className='select-heading text-xl font-semibold mr-3 '>Select Time</h2>
-                  <select  className='date-input border-2 border-black rounded-lg p-2 px-2 '
+                  <select className='date-input border-2 border-black rounded-lg p-2 px-2 '
                     value={selectedTime ? selectedTime.value : ''}
                     onChange={(e) =>
                       setSelectedTime(
@@ -226,60 +239,51 @@ return (
                       </option>
                     ))}
                   </select>
-                  </div>
-                  <div className='name-client-container border shadow-md rounded-lg mt-5 p-5'>
+                </div>
+                <div className='name-client-container border shadow-md rounded-lg mt-5 p-5'>
                   <h2 className=' shadow-red-500 text-2xl font-bold text-blue-500 mb-5'>Enter Details</h2>
                   <label className='select-heading text-lg mr-4'>Name:</label>
                   <input type="text" value={name} onChange={(e) => setName(e.target.value)} className='date-input border-2 border-black rounded-lg p-2 mr-16 h-12 w-96 ' />
-
+  
                   <label className='select-heading text-lg mr-4'>Client:</label>
                   <input type="text" value={client} onChange={(e) => setClient(e.target.value)} className='date-input border-2 border-black rounded-lg p-2 mr-16 h-12 w-96'/>
-
+  
                   <button onClick={bookTimeSlot} className='book-button text-white font-semibold bg-blue-500 hover:bg-blue-600  rounded-lg p-2 px-4 '>Book Slot</button>
-                  </div>
-                </>
-              )}
-            </>
-          )}
-        </div>
-
-        <div className="booked-slots-container flex border-2 rounded-lg p-3 gap-5">
-        <div className="slot-container-2">
-  <h2 className='heading-2 text-xl font-bold font-serif p-3 rounded-xl justify-center items-center flex'>Booked Slots</h2>
-  {loading ? (
-    <p>Loading...</p>
-  ) : error ? (
-    <p>Error: {error}</p>
-  ) : (
-    bookedSlots.map((bookedSlot, index) => (
-      <div key={index} className="booked-slot">
-        <p className='paragraph text-white font-semibold justify-center items-center flex'>
-          {new Date(bookedSlot.date).toLocaleDateString()} - {bookedSlot.time}
-        </p>
+                </div>
+              </>
+            )}
+          </>
+        )}
       </div>
-    ))
-  )}
-</div>
-    
-    
-
-
-
-          <div className="booked-slots-right h-96  basis-3/4">
-            <h2 className='heading-4 text-xl font-bold font-serif border-2 p-3 text-red-500 rounded-xl shadow-md justify-center items-center flex'>Booked Slot Details here</h2>
-            <table className='booking-user-table w-full
-         border-collapse border-2 border-slate-300'>
-              <thead>
-                <tr className='thread-container'>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2'>Date</th>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2'>Time</th>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Name</th>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Client</th>
-                  <th className='user-text text-center border-2 border-slate-300 bg-indigo-800 text-white font-bold p-2 '>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bookedSlots.map((bookedSlot, index) => (
+      
+      <div className="booked-slots-container flex border-2 rounded-lg p-3 gap-5">
+        <div className="slot-container-2">
+          <h2 className='heading-2 text-xl font-bold font-serif p-3 rounded-xl justify-center items-center flex'>Booked Slots</h2>
+        </div>
+  
+        <div className="booked-slots-right h-96 basis-3/4">
+          <h2 className='heading-4 text-xl font-bold font-serif border-2 p-3 text-red-500 rounded-xl shadow-md justify-center items-center flex'>Booked Slot Details here</h2>
+          <table className='booking-user-table w-full border-collapse border-2 border-slate-300'>
+            <thead>
+              <tr className='thread-container'>
+                <th className='user-text text-center border-2 border-slate-300 bg-blue-800 text-white font-bold p-2'>Date</th>
+                <th className='user-text text-center border-2 border-slate-300 bg-blue-800 text-white font-bold p-2'>Time</th>
+                <th className='user-text text-center border-2 border-slate-300 bg-blue-800 text-white font-bold p-2 '>Name</th>
+                <th className='user-text text-center border-2 border-slate-300 bg-blue-800 text-white font-bold p-2 '>Client</th>
+                <th className='user-text text-center border-2 border-slate-300 bg-blue-800 text-white font-bold p-2 '>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedBookedSlots.map((bookedSlot, index) => (
+                <>
+                  {index > 0 && new Date(bookedSlot.date).getDate() !== new Date(sortedBookedSlots[index - 1].date).getDate() && (
+                    // Insert a spacer row with day details
+                    <tr key={`spacer-${index}`} className='table-container spacer-row'>
+                      <td colSpan="5" className="spacer-cell text-center">
+                        {new Date(bookedSlot.date).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  )}
                   <tr key={index} className='table-container'>
                     <td className='user-text text-center border-2 border-slate-300  '>{new Date(bookedSlot.date).toLocaleDateString()}</td>
                     <td className='user-text text-center border-2 border-slate-300  '>{bookedSlot.time}</td>
@@ -289,12 +293,14 @@ return (
                       <button onClick={() => handleDeleteSlot(index)} className='button-2 bg-red-400 px-4  font-bold p-2 hover:bg-red-500  rounded-md hover:text-white  '>Delete</button>
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          </div>
-          </div>
-    )
-}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+  }
+
 export default BookingPage 
