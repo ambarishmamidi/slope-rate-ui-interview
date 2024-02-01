@@ -67,7 +67,6 @@ function Navbar() {
           <Route exact path="/schedule/:id" component={Squads} />
           <Route exact path="/live/:id" component={LiveScore} />
           <Route exact path="/userRegistration" component={RegistrationForm} />
-
         </Switch>
         </BrowserRouter>
        

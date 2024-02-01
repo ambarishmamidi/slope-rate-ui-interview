@@ -1,0 +1,85 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+      }
+
+  .footer-heading{
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+  }
+
+  .address{
+    text-align: left;
+    font-weight: 400;
+    font-size: large;
+    color: yellow;
+  }
+  .address1 {
+    font-size: small;
+  }
+  .footer-details{
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    font-size: small;
+  }
+  .footer-list{
+    margin-left: 700px; 
+    display: flex;  
+    justify-content:space-between;
+    flex-direction: row;
+    align-items: center;
+     
+  }
+  .footer-icons{
+    margin-right: 40px;
+    
+  }
+  .footer-icons:hover{
+    cursor: pointer;
+
+  }
+
+  .subscribe{
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+
+  }
+
+
+.sub-button{
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.subscribe form {
+    flex-direction: row;
+    align-items: center; /* Center the input and button vertically */
+    justify-content: space-between;
+    display: flex;
+    
+  }
+  .Add-container{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  .input-sub-container{
+     display: flex;
+     align-items: center;
+  }
+  .inputbox{
+    height: 35px;
+    width: auto;
+  }
+  .sub-font{
+    font-size: 12px;
+  }
