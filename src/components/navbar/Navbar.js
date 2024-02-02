@@ -10,6 +10,7 @@ import Squads from '../Squad/Squads'
 import Home from '../Home/Home'
 import LiveScore from '../LiveScore/LiveScore'
 import RegistrationForm from '../RegisterationForm'
+import CandiateLogin from '../Candiatelogin/CandiateLogin'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,12 +44,16 @@ function Navbar() {
       <Link to="/">
         <button type="button" className='p-3 rounded-lg text-white font-semibold hover:bg-blue-900 px-4'>Home</button>
       </Link>
-      <Link to="/bookingpage">
+      {/* <Link to="/bookingpage">
         <button type="button" className='p-3 rounded-lg text-white font-semibold  hover:bg-blue-900 px-4'>Booking Slot</button>
       </Link>
       <Link to="/quiz">
         <button type="button" className='rounded-lg p-3 text-white font-semibold  hover:bg-blue-900 px-4'>Take Quiz</button>
+      </Link> */}
+      <Link to="/candiateLogin">
+        <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>Candiate Login</button>
       </Link>
+      
       <Link to="/match">
         <button type="button" className='mt-0 rounded-lg p-3 text-white font-semibold hover:bg-blue-900 px-4'>Matches Details</button>
       </Link>
@@ -61,6 +66,7 @@ function Navbar() {
 </nav>
 <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/candiateLogin" component={CandiateLogin} />
       <Route exact path="/bookingpage" component={BookingPage} />
           <Route exact path="/quiz" component={QuizPage} />
           <Route exact path="/match" component={Match} />
