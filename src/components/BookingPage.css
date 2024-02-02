@@ -71,7 +71,9 @@ button {
 
 .booked-slots-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   overflow-y: auto;
   height: auto;
 }
@@ -226,4 +228,8 @@ button {
   color: #fff;
   font-weight: bold;
   padding: 10px;
+}
+
+.booked-slots-container {
+
 }
