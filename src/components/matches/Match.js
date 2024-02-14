@@ -8,7 +8,7 @@ function Match() {
 
   
   useEffect(() => {
-    axios.get("https://slopre-rate-exam-a315a351a951.herokuapp.com/schedule").then(res => {
+    axios.get("https://sloperate-interview-6d3724f9f5ca.herokuapp.com/schedule").then(res => {
       setData(res.data);
     });
   }, []);

@@ -54,7 +54,7 @@ const QuizPage = () => {
       setLoading(true);
 
       // Fetch questions from the backend API
-      const response = await fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/quiz/all');
+      const response = await fetch('https://sloperate-interview-6d3724f9f5ca.herokuapp.com/quiz/all');
       const data = await response.json();
 
       console.log(data);
@@ -119,7 +119,7 @@ const QuizPage = () => {
     // Call the function to submit the data to the backend
     // onSubmit(submissionData);
     console.log("submissionData: ", submissionData);
-    fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/question/submit', {
+    fetch('https://sloperate-interview-6d3724f9f5ca.herokuapp.com/question/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ const QuizPage = () => {
     // Assuming you have a backend endpoint to store the answers
     // You can make a POST request to store the answers
     // Example:
-    fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/question/submit', {
+    fetch('https://sloperate-interview-6d3724f9f5ca.herokuapp.com/question/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
