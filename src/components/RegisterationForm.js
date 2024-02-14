@@ -38,7 +38,7 @@ const RegistrationForm = () => {
 
       // Make a POST request to the registration endpoint
       const response = await axios.post(
-        'https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/register/',
+        'https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/registration/register/',
         userData
       );
 
@@ -128,7 +128,7 @@ const RegistrationForm = () => {
     // try {
       // Make a DELETE request to the registration endpoint with the mobile number parameter
       const response = await axios.delete(
-        `https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/delete/${mobile}`
+        `https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/registration/delete/${mobile}`
       
        
        
@@ -189,7 +189,7 @@ const RegistrationForm = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://slopre-rate-exam-a315a351a951.herokuapp.com/api/registration/all'
+          'https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/registration/all'
         );
         const responseData = response.data;
 

@@ -31,8 +31,7 @@ const BookingPage = () => {
         try {
             setLoading(true);
 
-            const response = await fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/api/bookings', {
-                mode: 'cors',
+            const response = await fetch('https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/bookings', {
             });
 
             if (!response.ok) {
@@ -88,7 +87,7 @@ const BookingPage = () => {
 
             try {
                 // Add a new booking to the backend
-                const response = await fetch('https://slopre-rate-exam-a315a351a951.herokuapp.com/api/bookings', {
+                const response = await fetch('https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/bookings', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -146,7 +145,7 @@ const BookingPage = () => {
               dispatch(deleteBookedSlot(id));
   
               // Delete the booking from the backend
-              const response = await fetch(`https://slopre-rate-exam-a315a351a951.herokuapp.com/api/bookings/${id}`, {
+              const response = await fetch(`https://sloperate-interview-6d3724f9f5ca.herokuapp.com/api/bookings/${id}`, {
                   method: 'DELETE',
               });
   
